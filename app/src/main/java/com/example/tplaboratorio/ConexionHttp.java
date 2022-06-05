@@ -11,6 +11,7 @@ import java.net.URL;
 
 public class ConexionHttp {
 
+    //PETICION GET SIN PARAMETROS
     public String obtenerInformacion(String urlEndpoint)
     {
         String respuesta = "";
