@@ -2,6 +2,8 @@ package com.example.tplaboratorio;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 import android.os.Handler;
@@ -14,10 +16,14 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MainActivity extends AppCompatActivity implements Handler.Callback {
 
     TextView tv;
     ImageView img;
+    JugadorAdapter jugadorAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,6 +36,10 @@ public class MainActivity extends AppCompatActivity implements Handler.Callback 
         HiloConexion hilo = new HiloConexion(handler);
         hilo.start();
 
+
+
+
+
         //this.findViewById(R.id.testView);
     }
 
@@ -37,14 +47,45 @@ public class MainActivity extends AppCompatActivity implements Handler.Callback 
     public boolean handleMessage(@NonNull Message message) {
         String respuesta = message.obj.toString();
         Log.d("MESSAGE", "handleMessage: " + respuesta  );
-        this.tv.setText(message.obj.toString());
+        //this.tv.setText(message.obj.toString());
 
         try {
-            JSONObject respuestaJSON =  new JSONObject(respuesta);      //Parseo la respuesta a JSON
+            JSONArray respuestaArray = new JSONArray(respuesta);
+            //JSONObject respuestaJSON =  new JSONObject(respuesta);      //Parseo la respuesta a JSON
+            Log.d("--------", ""+ respuestaArray);
 
-            JSONArray drinks = respuestaJSON.getJSONArray("drinks") ;
+            List<JugadorModel> lista = new ArrayList<>();
+
+            for(int i=0; i<respuestaArray.length(); i++)
+            {
+                JSONObject jsObj = respuestaArray.getJSONObject(i);
+                JugadorModel jugador = new JugadorModel();
+                jugador.setNombre(jsObj.getString("nombre"));
+                jugador.setApellido(jsObj.getString("apellido"));
+                jugador.setNacionalidad(jsObj.getString("nacionalidad"));
+                jugador.setClub(jsObj.getString("club"));
+                jugador.setPosicion(jsObj.getString("posicion"));
+                jugador.setPie(jsObj.getString("pie"));
+                jugador.setNumero( Integer.valueOf(jsObj.getString("numero")) );
+                jugador.setImagen(jsObj.getString("imagen"));
+                jugador.setFecha_nacimiento(jsObj.getString("fecha_nacimiento"));
+                jugador.setEstatura( Float.valueOf(jsObj.getString("estatura")) );
+
+                lista.add( jugador );
+                Log.d("----", "Se anadio" +jugador);
+            }
+
+            this.jugadorAdapter = new JugadorAdapter(lista);
+            RecyclerView rv = super.findViewById(R.id.rvJugadores);
+            rv.setAdapter(this.jugadorAdapter);
+            rv.setLayoutManager(new GridLayoutManager(this,1));
+            /*
+            JSONObject unEquipo = respuestaArray.getJSONObject(message.arg1);
+            Log.d("PEDRO", ""+unEquipo);
+            this.tv.setText(unEquipo.toString());*/
+            /*JSONArray drinks = respuestaJSON.getJSONArray("") ;
             JSONObject unObjeto = drinks.getJSONObject(0);
-            Log.d("-----", "" + unObjeto.getString("strDrink"));
+            Log.d("-----", "" + unObjeto.getString("strDrink"));*/
 
 
 
@@ -59,9 +100,6 @@ public class MainActivity extends AppCompatActivity implements Handler.Callback 
     public String obtenerUnAtributo()
     {
         String valor = "";
-
-
-
 
         return valor;
     }
