@@ -29,10 +29,12 @@ public class JugadorAdapter extends RecyclerView.Adapter<JugadorVH> {
     @Override
     public void onBindViewHolder(@NonNull JugadorVH holder, int position) {
         JugadorModel j = JugadorAdapter.listaJugadores.get(position);
-        Log.d("-----", "onBindViewHolder: " +j);
-
+        Log.d("-----", "onBindViewHolder: " +j.getNombre() +" "+ j.getApellido());
         holder.tvNombre.setText(j.getNombre());
         holder.tvApellido.setText(j.getApellido());
+
+        clickJugador click = new clickJugador(j);
+        holder.itemView.setOnClickListener(click);
 
 
     }

@@ -19,11 +19,11 @@ public class HiloConexion extends Thread{
         //{
             String respuesta = con.obtenerInformacion("https://apiequipospedro.herokuapp.com/jugadores");
 
-            try {
+           /* try {
                 Thread.sleep(3000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
-            }
+            }*/
 
             Message message = new Message();
             message.arg1 = 1;
