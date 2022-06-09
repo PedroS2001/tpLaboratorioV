@@ -15,22 +15,17 @@ public class HiloConexion extends Thread{
     @Override
     public void run() {
         ConexionHttp con = new ConexionHttp();
-        //for(int i=0;i<5;i++)
-        //{
-            String respuesta = con.obtenerInformacion("https://apiequipospedro.herokuapp.com/jugadores");
+        String respuesta = con.obtenerInformacion("https://apiequipospedro.herokuapp.com/jugadores");
 
-           /* try {
-                Thread.sleep(3000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }*/
+        /*try {
+            Thread.sleep(3000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }*/
 
-            Message message = new Message();
-            message.arg1 = 1;
-            message.obj = respuesta;
-
-            colaMensajes.sendMessage(message);
-        //}
+        Message message = new Message();
+        message.arg1 = 1;
+        message.obj = respuesta;colaMensajes.sendMessage(message);
 
     }
 

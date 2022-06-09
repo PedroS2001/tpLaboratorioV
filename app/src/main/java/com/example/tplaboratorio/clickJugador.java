@@ -14,7 +14,7 @@ public class clickJugador implements View.OnClickListener {
     }
     @Override
     public void onClick(View view) {
-        Intent i = new Intent(view.getContext(), PerfilJugador.class);
+        Intent i = new Intent(view.getContext(), PerfilJugadorActivity.class);
 
         i.putExtra("nombre", this.jugador.getNombre());
         i.putExtra("apellido", this.jugador.getApellido());

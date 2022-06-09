@@ -9,13 +9,39 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 public class JugadorAdapter extends RecyclerView.Adapter<JugadorVH> {
 
     public static List<JugadorModel> listaJugadores;
+    public static List<JugadorModel> listaJugadoresOriginal;
+
     public JugadorAdapter(List<JugadorModel> listaJugadores){
         JugadorAdapter.listaJugadores = listaJugadores;
+        JugadorAdapter.listaJugadoresOriginal = new ArrayList<>();
+        JugadorAdapter.listaJugadoresOriginal.addAll(listaJugadores);
+    }
+
+    public void filtrar(String search){
+        if(search.length() > 0)
+        {
+            listaJugadores.clear();
+            for(JugadorModel j: listaJugadoresOriginal)
+            {
+                if(j.getNombre().toLowerCase().contains(search.toLowerCase(Locale.ROOT))
+                        || j.getApellido().toLowerCase().contains(search.toLowerCase()) )
+                {
+                    listaJugadores.add(j);
+                }
+            }
+        }
+        else{
+            listaJugadores.clear();
+            listaJugadores.addAll(listaJugadoresOriginal);
+        }
+        notifyDataSetChanged();
     }
 
     @NonNull

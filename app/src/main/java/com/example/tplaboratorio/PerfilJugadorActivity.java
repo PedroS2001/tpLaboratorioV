@@ -1,11 +1,15 @@
 package com.example.tplaboratorio;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
 
-public class PerfilJugador extends AppCompatActivity {
+public class PerfilJugadorActivity extends AppCompatActivity {
 
     TextView tvNombre;
     TextView tvApellido;
@@ -33,5 +37,29 @@ public class PerfilJugador extends AppCompatActivity {
         this.tvNombre.setText(nombre);
         this.tvApellido.setText(apellido);
 
+        ActionBar acbar = super.getSupportActionBar();
+        acbar.setTitle("Perfil del jugador");
+        acbar.setDisplayHomeAsUpEnabled(true);
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        getMenuInflater().inflate(R.menu.menu_principal, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId()== android.R.id.home)
+        {
+            this.finish();   //cierra el activity
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+
+
+
 }
