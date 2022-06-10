@@ -14,9 +14,10 @@ public class HiloConexion extends Thread{
 
     @Override
     public void run() {
+        boolean texto = false;//////////SOLO PARA QUE NO ROMPA
         ConexionHttp con = new ConexionHttp();
-        String respuesta = con.obtenerInformacion("https://apiequipospedro.herokuapp.com/jugadores");
-
+        byte[] respuesta = con.obtenerInformacion("https://apiequipospedro.herokuapp.com/jugadores");
+        String respuestaString = new String(respuesta);
         /*try {
             Thread.sleep(3000);
         } catch (InterruptedException e) {
@@ -25,7 +26,14 @@ public class HiloConexion extends Thread{
 
         Message message = new Message();
         message.arg1 = 1;
-        message.obj = respuesta;colaMensajes.sendMessage(message);
+        message.obj = respuestaString;
+        colaMensajes.sendMessage(message);
+
+
+
+        if(!texto){
+
+        }
 
     }
 

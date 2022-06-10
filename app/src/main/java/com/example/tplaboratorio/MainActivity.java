@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity implements Handler.Callback,
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        this.tv = findViewById(R.id.testView);
+        //this.tv = findViewById(R.id.testView);
         Handler handler = new Handler(this);
 
         HiloConexion hilo = new HiloConexion(handler);
@@ -125,6 +125,13 @@ public class MainActivity extends AppCompatActivity implements Handler.Callback,
 
         } catch (JSONException e) {
             e.printStackTrace();
+        }
+
+
+
+        if(message.arg1 == 3) //imagen
+        {
+
         }
 
 

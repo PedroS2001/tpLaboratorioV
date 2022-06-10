@@ -42,12 +42,12 @@ public class PerfilJugadorActivity extends AppCompatActivity {
         acbar.setDisplayHomeAsUpEnabled(true);
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
+    //@Override
+    /*public boolean onCreateOptionsMenu(Menu menu) {
 
         getMenuInflater().inflate(R.menu.menu_principal, menu);
         return super.onCreateOptionsMenu(menu);
-    }
+    }*/
 
 
     @Override

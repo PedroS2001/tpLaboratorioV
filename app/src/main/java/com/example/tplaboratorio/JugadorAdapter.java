@@ -62,6 +62,21 @@ public class JugadorAdapter extends RecyclerView.Adapter<JugadorVH> {
         clickJugador click = new clickJugador(j);
         holder.itemView.setOnClickListener(click);
 
+        //if(j.getImgByte() == null && j.isBuscandoImg() == false)
+
+        //si no tenemos el array de bytes lanzamos un hilo para buscarlo.
+        //se le pasa la posicion en la que va para cuando vuelva la ponga
+        //y cuando vuelva se le manda un notifyItemChanged
+        /*if(this.listaJugadores.get(position).img == null)
+        {
+            //lanzamos el hilo para buscarla
+        }
+        else{
+            //ya estuvo en el VH y ya esta descargada la img asi qeu solo la ponemos
+        }*/
+
+        //lanzamos el hilo para buscar la imagen
+        this.listaJugadores.get(position).getImagen();
 
     }
 

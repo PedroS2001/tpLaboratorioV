@@ -12,9 +12,9 @@ import java.net.URL;
 public class ConexionHttp {
 
     //PETICION GET SIN PARAMETROS
-    public String obtenerInformacion(String urlEndpoint)
+    public byte[] obtenerInformacion(String urlEndpoint)
     {
-        String respuesta = "";
+        byte[] respuesta = null;
 
         try {
             URL url = new URL(urlEndpoint);
@@ -40,7 +40,8 @@ public class ConexionHttp {
 
                 iStream.close();
 
-                respuesta = new String(baos.toByteArray(), "UTF-8");
+                respuesta = baos.toByteArray();
+                //respuesta = new String(baos.toByteArray(), "UTF-8");
                 Log.d("LEYO:", "" + respuesta);
 
             }else {

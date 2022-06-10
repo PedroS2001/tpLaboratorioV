@@ -15,6 +15,9 @@ public class JugadorModel {
     private String fecha_nacimiento;
     private Float estatura;
 
+    private byte[] imgByte;
+    private boolean buscandoImg;
+
 
     public JugadorModel() {
     }
@@ -112,4 +115,25 @@ public class JugadorModel {
     public void setEstatura(Float estatura) {
         this.estatura = estatura;
     }
+
+
+
+
+    public byte[] getImgByte() {
+        return imgByte;
+    }
+
+    public void setImgByte(byte[] imgByte) {
+        this.imgByte = imgByte;
+    }
+
+    public boolean isBuscandoImg() {
+        return buscandoImg;
+    }
+
+    public void setBuscandoImg(boolean buscandoImg) {
+        this.buscandoImg = buscandoImg;
+    }
+
+
 }
