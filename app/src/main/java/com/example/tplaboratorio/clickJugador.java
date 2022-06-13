@@ -8,10 +8,10 @@ import android.view.View;
 public class clickJugador implements View.OnClickListener {
 
     JugadorModel jugador;
-    public clickJugador(JugadorModel jugador)
-    {
+    public clickJugador(JugadorModel jugador) {
         this.jugador = jugador;
     }
+
     @Override
     public void onClick(View view) {
         Intent i = new Intent(view.getContext(), PerfilJugadorActivity.class);
@@ -28,11 +28,7 @@ public class clickJugador implements View.OnClickListener {
         i.putExtra("estatura", this.jugador.getEstatura());
 
 
-
         Activity a = (Activity) view.getContext();
         a.startActivity(i);
-
-        String nombreApellido = this.jugador.getNombre() + " "+ this.jugador.getApellido();
-        Log.d("CLICK", nombreApellido);
     }
 }

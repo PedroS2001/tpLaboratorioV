@@ -23,7 +23,7 @@ public class ConexionHttp {
             connection.setRequestMethod("GET");
             connection.setConnectTimeout(5000);
 
-            connection.connect();   //Realizo la peticion y se guardan los datos en connection
+            connection.connect();
 
             int responseCode = connection.getResponseCode();
             if(responseCode == 200)
@@ -41,20 +41,17 @@ public class ConexionHttp {
                 iStream.close();
 
                 respuesta = baos.toByteArray();
-                //respuesta = new String(baos.toByteArray(), "UTF-8");
                 Log.d("LEYO:", "" + respuesta);
 
             }else {
                 Log.d("ERROR", "Salio mal la consulta " + responseCode);
             }
 
-
         } catch (MalformedURLException e) {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         }
-
 
         return respuesta;
     }

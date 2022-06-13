@@ -10,8 +10,8 @@ public class HiloConexion extends Thread{
     private Integer tipo;
     private String url;
     private Integer pos;
-    public HiloConexion(Handler handler, String url, int tipo, int pos)
-    {
+
+    public HiloConexion(Handler handler, String url, int tipo, int pos) {
         this.colaMensajes = handler;
         this.url = url;
         this.tipo = tipo;

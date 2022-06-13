@@ -1,7 +1,9 @@
 package com.example.tplaboratorio;
 
 import android.app.Activity;
+import android.content.res.Resources;
 import android.graphics.BitmapFactory;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Handler;
 import android.util.Log;
@@ -79,14 +81,14 @@ public class JugadorAdapter extends RecyclerView.Adapter<JugadorVH> {
         {
             holder.imgJugador.setImageBitmap(BitmapFactory.decodeByteArray(j.getImgByte(),0, j.getImgByte().length));
         }else{
-            holder.imgJugador.setImageBitmap(null);
+            Resources res = this.a.getResources();
+            Drawable draw =  res.getDrawable(R.drawable.ic_search_black_24dp);
+            holder.imgJugador.setImageDrawable(draw);
         }
-
 
     }
 
-    public void actualizarImagen(Integer indice, byte[] img)
-    {
+    public void actualizarImagen(Integer indice, byte[] img) {
         listaJugadores.get(indice).setImgByte(img);
     }
 

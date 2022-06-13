@@ -130,25 +130,16 @@ public class MainActivity extends AppCompatActivity implements Handler.Callback,
             } catch (JSONException e) {
                 e.printStackTrace();
             }
-        }else if(message.arg1 == 3)     //es imagen
+        }
+        else if(message.arg1 == 3)     //es imagen
         {
             byte[] img = (byte[]) message.obj;
-            Log.d("img tamño",""+img.length);
-            //this.img.setImageBitmap(BitmapFactory.decodeByteArray(img,0, img.length));
-            this.jugadorAdapter.actualizarImagen(message.arg2, img);
-            this.jugadorAdapter.notifyDataSetChanged();
 
+            this.jugadorAdapter.actualizarImagen(message.arg2, img);
+            this.jugadorAdapter.notifyItemChanged(message.arg2);
         }
 
-
         return false;
-    }
-
-    public String obtenerUnAtributo()
-    {
-        String valor = "";
-
-        return valor;
     }
 
 }

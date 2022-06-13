@@ -3,7 +3,6 @@ package com.example.tplaboratorio;
 import java.util.Date;
 
 public class JugadorModel {
-    private String id;
     private String nombre;
     private String apellido;
     private String nacionalidad;
@@ -22,8 +21,7 @@ public class JugadorModel {
     public JugadorModel() {
     }
 
-    public JugadorModel(String id, String nombre, String apellido, String nacionalidad, String club, String posicion, String pie, Integer numero, String imagen, String fecha_nacimiento, Float estatura) {
-        this.id = id;
+    public JugadorModel(String nombre, String apellido, String nacionalidad, String club, String posicion, String pie, Integer numero, String imagen, String fecha_nacimiento, Float estatura, byte[] imgByte) {
         this.nombre = nombre;
         this.apellido = apellido;
         this.nacionalidad = nacionalidad;
@@ -34,6 +32,7 @@ public class JugadorModel {
         this.imagen = imagen;
         this.fecha_nacimiento = fecha_nacimiento;
         this.estatura = estatura;
+        this.imgByte = imgByte;
     }
 
     public String getNombre() {
