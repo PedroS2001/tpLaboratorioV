@@ -29,7 +29,6 @@ public class MainActivity extends AppCompatActivity implements Handler.Callback 
 
     TextView tv;
     ImageView img;
-    JugadorAdapter jugadorAdapter;
     EquipoAdapter equipoAdapter;
 
     @Override
@@ -37,14 +36,9 @@ public class MainActivity extends AppCompatActivity implements Handler.Callback 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        this.tv = findViewById(R.id.testView);
-        this.img = findViewById(R.id.img);
         Handler handler = new Handler(this);
-
         HiloConexion hilo = new HiloConexion(handler, "https://apiequipospedro.herokuapp.com/equipo", 1,1 );
         hilo.start();
-
-
 
 
         ActionBar acbar = super.getSupportActionBar();
@@ -57,7 +51,7 @@ public class MainActivity extends AppCompatActivity implements Handler.Callback 
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getItemId()== android.R.id.home)
         {
-            this.finish();   //cierra el activity
+            this.finish();
         }
 
         return super.onOptionsItemSelected(item);
@@ -93,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements Handler.Callback 
                 this.equipoAdapter = new EquipoAdapter(lista, this);
                 RecyclerView rv = super.findViewById(R.id.rvEquipos);
                 rv.setAdapter(this.equipoAdapter);
-                rv.setLayoutManager(new GridLayoutManager(this,1));
+                rv.setLayoutManager(new GridLayoutManager(this,2));
 
             } catch (JSONException e) {
                 e.printStackTrace();

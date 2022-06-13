@@ -5,8 +5,9 @@ public class EquipoModel {
     private String pais;
     private String liga;
     private String urlImagen;
+
     private byte[] imgByte;
-    private Boolean buscandoImagen;
+    private boolean buscandoImagen;
 
     public EquipoModel() {
     }
@@ -53,11 +54,12 @@ public class EquipoModel {
         this.imgByte = imgByte;
     }
 
-    public Boolean getBuscandoImagen() {
+    public boolean isBuscandoImagen() {
         return buscandoImagen;
     }
 
-    public void setBuscandoImagen(Boolean buscandoImagen) {
+    public void setBuscandoImagen(boolean buscandoImagen) {
         this.buscandoImagen = buscandoImagen;
     }
+
 }

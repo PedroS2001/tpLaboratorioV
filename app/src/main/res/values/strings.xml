@@ -4,6 +4,8 @@
     <string name="app_teams">Teams</string>
     <string name="app_player_profile">Player profile</string>
 
+    <string name="app_loading_image">Wait for the image to finish loading</string>
+
     <string name="player_foot">Foot</string>
     <string name="player_team">Team</string>
     <string name="player_position">Position</string>

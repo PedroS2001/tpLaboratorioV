@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.res.Resources;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
-import android.net.Uri;
 import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -66,7 +65,7 @@ public class JugadorAdapter extends RecyclerView.Adapter<JugadorVH> {
         holder.tvNombre.setText(j.getNombre());
         holder.tvApellido.setText(j.getApellido());
 
-        clickJugador click = new clickJugador(j);
+        ClickJugador click = new ClickJugador(j);
         holder.itemView.setOnClickListener(click);
 
         if(j.getImgByte() == null && j.isBuscandoImg() == false)

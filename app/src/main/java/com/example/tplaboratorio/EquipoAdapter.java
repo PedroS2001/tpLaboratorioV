@@ -1,6 +1,8 @@
 package com.example.tplaboratorio;
 
 import android.app.Activity;
+import android.graphics.BitmapFactory;
+import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,9 +32,23 @@ public class EquipoAdapter extends RecyclerView.Adapter<EquipoVH> {
     public void onBindViewHolder(@NonNull EquipoVH holder, int position) {
         EquipoModel equipo = listaEquipos.get(position);
 
-        ClickEquipo click = new ClickEquipo(equipo.getNombre());
+        ClickEquipo click = new ClickEquipo(equipo);
         holder.itemView.setOnClickListener(click);
-        holder.tvNombre.setText(equipo.getNombre());
+
+        if(equipo.isBuscandoImagen() == false && equipo.getImgByte() == null)
+        {
+            equipo.setBuscandoImagen(true);
+
+            Handler handler = new Handler((Handler.Callback) this.a);
+            HiloConexion hilo = new HiloConexion(handler, equipo.getUrlImagen(), 3, position);
+            hilo.start();
+        }
+
+        if(equipo.getImgByte() != null)
+        {
+            holder.img.setImageBitmap(BitmapFactory.decodeByteArray(equipo.getImgByte(),0, equipo.getImgByte().length));
+        }
+
     }
 
     @Override

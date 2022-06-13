@@ -5,6 +5,8 @@
     <string name="app_teams">Equipos</string>
     <string name="app_player_profile">Perfil del jugador</string>
 
+    <string name="app_loading_image">Espere a que la imagen termine de cargarse</string>
+
     <string name="player_foot">Pie</string>
     <string name="player_team">Equipo</string>
     <string name="player_position">Posicion</string>

@@ -23,7 +23,7 @@ public class HiloConexion extends Thread{
         ConexionHttp con = new ConexionHttp();
         byte[] respuesta = con.obtenerInformacion(url);
 
-        if(this.tipo == 1)
+        if(this.tipo == 1)  //TEXTO
         {
             String respuestaString = new String(respuesta);
 
@@ -32,16 +32,7 @@ public class HiloConexion extends Thread{
             message.obj = respuestaString;
             colaMensajes.sendMessage(message);
         }
-        else if(this.tipo == 2)
-        {
-            String respuestaString = new String(respuesta);
-
-            Message message = new Message();
-            message.arg1 = 2;
-            message.obj = respuestaString;
-            colaMensajes.sendMessage(message);
-        }
-        else if(this.tipo == 3)
+        else if(this.tipo == 3) //IMAGEN
         {
             Message message = new Message();
             message.arg1 = 3;
