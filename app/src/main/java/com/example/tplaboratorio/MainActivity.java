@@ -7,6 +7,7 @@ import androidx.core.view.MenuItemCompat;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -35,10 +36,11 @@ public class MainActivity extends AppCompatActivity implements Handler.Callback,
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //this.tv = findViewById(R.id.testView);
+        this.tv = findViewById(R.id.testView);
+        this.img = findViewById(R.id.img);
         Handler handler = new Handler(this);
 
-        HiloConexion hilo = new HiloConexion(handler);
+        HiloConexion hilo = new HiloConexion(handler, "https://apiequipospedro.herokuapp.com/jugadores", 1,1 );
         hilo.start();
 
 
@@ -93,44 +95,48 @@ public class MainActivity extends AppCompatActivity implements Handler.Callback,
         String respuesta = message.obj.toString();
         Log.d("MESSAGE", "handleMessage: " + respuesta  );
 
-        try {
-            JSONArray respuestaArray = new JSONArray(respuesta);
-            Log.d("--------", ""+ respuestaArray);
-
-            List<JugadorModel> lista = new ArrayList<>();
-
-            for(int i=0; i<respuestaArray.length(); i++)
-            {
-                JSONObject jsObj = respuestaArray.getJSONObject(i);
-                JugadorModel jugador = new JugadorModel();
-                jugador.setNombre(jsObj.getString("nombre"));
-                jugador.setApellido(jsObj.getString("apellido"));
-                jugador.setNacionalidad(jsObj.getString("nacionalidad"));
-                jugador.setClub(jsObj.getString("club"));
-                jugador.setPosicion(jsObj.getString("posicion"));
-                jugador.setPie(jsObj.getString("pie"));
-                jugador.setNumero( Integer.valueOf(jsObj.getString("numero")) );
-                jugador.setImagen(jsObj.getString("imagen"));
-                jugador.setFecha_nacimiento(jsObj.getString("fecha_nacimiento"));
-                jugador.setEstatura( Float.valueOf(jsObj.getString("estatura")) );
-
-                lista.add( jugador );
-                Log.d("----", "Se anadio" +jugador);
-            }
-
-            this.jugadorAdapter = new JugadorAdapter(lista);
-            RecyclerView rv = super.findViewById(R.id.rvJugadores);
-            rv.setAdapter(this.jugadorAdapter);
-            rv.setLayoutManager(new GridLayoutManager(this,1));
-
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-
-
-
-        if(message.arg1 == 3) //imagen
+        if(message.arg1 == 1)   //es texto
         {
+            try {
+                JSONArray respuestaArray = new JSONArray(respuesta);
+                Log.d("--------", ""+ respuestaArray);
+
+                List<JugadorModel> lista = new ArrayList<>();
+
+                for(int i=0; i<respuestaArray.length(); i++)
+                {
+                    JSONObject jsObj = respuestaArray.getJSONObject(i);
+                    JugadorModel jugador = new JugadorModel();
+                    jugador.setNombre(jsObj.getString("nombre"));
+                    jugador.setApellido(jsObj.getString("apellido"));
+                    jugador.setNacionalidad(jsObj.getString("nacionalidad"));
+                    jugador.setClub(jsObj.getString("club"));
+                    jugador.setPosicion(jsObj.getString("posicion"));
+                    jugador.setPie(jsObj.getString("pie"));
+                    jugador.setNumero( Integer.valueOf(jsObj.getString("numero")) );
+                    jugador.setImagen(jsObj.getString("imagen"));
+                    jugador.setFecha_nacimiento(jsObj.getString("fecha_nacimiento"));
+                    jugador.setEstatura( Float.valueOf(jsObj.getString("estatura")) );
+
+                    lista.add( jugador );
+                    Log.d("----", "Se anadio" +jugador);
+                }
+
+                this.jugadorAdapter = new JugadorAdapter(lista, this);
+                RecyclerView rv = super.findViewById(R.id.rvJugadores);
+                rv.setAdapter(this.jugadorAdapter);
+                rv.setLayoutManager(new GridLayoutManager(this,1));
+
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }else if(message.arg1 == 3)     //es imagen
+        {
+            byte[] img = (byte[]) message.obj;
+            Log.d("img tamño",""+img.length);
+            //this.img.setImageBitmap(BitmapFactory.decodeByteArray(img,0, img.length));
+            this.jugadorAdapter.actualizarImagen(message.arg2, img);
+            this.jugadorAdapter.notifyDataSetChanged();
 
         }
 

@@ -7,33 +7,40 @@ import android.os.Message;
 public class HiloConexion extends Thread{
 
     Handler colaMensajes;
-    public HiloConexion(Handler handler)
+    private Integer tipo;
+    private String url;
+    private Integer pos;
+    public HiloConexion(Handler handler, String url, int tipo, int pos)
     {
         this.colaMensajes = handler;
+        this.url = url;
+        this.tipo = tipo;
+        this.pos = pos;
     }
 
     @Override
     public void run() {
-        boolean texto = false;//////////SOLO PARA QUE NO ROMPA
         ConexionHttp con = new ConexionHttp();
-        byte[] respuesta = con.obtenerInformacion("https://apiequipospedro.herokuapp.com/jugadores");
-        String respuestaString = new String(respuesta);
-        /*try {
-            Thread.sleep(3000);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
-        }*/
+        byte[] respuesta = con.obtenerInformacion(url);
 
-        Message message = new Message();
-        message.arg1 = 1;
-        message.obj = respuestaString;
-        colaMensajes.sendMessage(message);
+        if(this.tipo == 1)
+        {
+            String respuestaString = new String(respuesta);
 
-
-
-        if(!texto){
-
+            Message message = new Message();
+            message.arg1 = 1;
+            message.obj = respuestaString;
+            colaMensajes.sendMessage(message);
         }
+        else if(this.tipo == 3)
+        {
+            Message message = new Message();
+            message.arg1 = 3;
+            message.arg2 = this.pos;
+            message.obj = respuesta;
+            this.colaMensajes.sendMessage(message);
+        }
+
 
     }
 

@@ -1,6 +1,9 @@
 package com.example.tplaboratorio;
 
+import android.app.Activity;
+import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.os.Handler;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -17,11 +20,13 @@ public class JugadorAdapter extends RecyclerView.Adapter<JugadorVH> {
 
     public static List<JugadorModel> listaJugadores;
     public static List<JugadorModel> listaJugadoresOriginal;
+    private Activity a;
 
-    public JugadorAdapter(List<JugadorModel> listaJugadores){
+    public JugadorAdapter(List<JugadorModel> listaJugadores, Activity a){
         JugadorAdapter.listaJugadores = listaJugadores;
         JugadorAdapter.listaJugadoresOriginal = new ArrayList<>();
         JugadorAdapter.listaJugadoresOriginal.addAll(listaJugadores);
+        this.a = a;
     }
 
     public void filtrar(String search){
@@ -62,22 +67,27 @@ public class JugadorAdapter extends RecyclerView.Adapter<JugadorVH> {
         clickJugador click = new clickJugador(j);
         holder.itemView.setOnClickListener(click);
 
-        //if(j.getImgByte() == null && j.isBuscandoImg() == false)
-
-        //si no tenemos el array de bytes lanzamos un hilo para buscarlo.
-        //se le pasa la posicion en la que va para cuando vuelva la ponga
-        //y cuando vuelva se le manda un notifyItemChanged
-        /*if(this.listaJugadores.get(position).img == null)
+        if(j.getImgByte() == null && j.isBuscandoImg() == false)
         {
-            //lanzamos el hilo para buscarla
+            j.setBuscandoImg(true);
+            Handler handler = new Handler((Handler.Callback) this.a);
+            HiloConexion hilo = new HiloConexion(handler, j.getImagen(), 3, position);
+            hilo.start();
         }
-        else{
-            //ya estuvo en el VH y ya esta descargada la img asi qeu solo la ponemos
-        }*/
 
-        //lanzamos el hilo para buscar la imagen
-        this.listaJugadores.get(position).getImagen();
+        if(j.getImgByte() != null)
+        {
+            holder.imgJugador.setImageBitmap(BitmapFactory.decodeByteArray(j.getImgByte(),0, j.getImgByte().length));
+        }else{
+            holder.imgJugador.setImageBitmap(null);
+        }
 
+
+    }
+
+    public void actualizarImagen(Integer indice, byte[] img)
+    {
+        listaJugadores.get(indice).setImgByte(img);
     }
 
     @Override

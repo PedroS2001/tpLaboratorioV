@@ -23,9 +23,11 @@ public class clickJugador implements View.OnClickListener {
         i.putExtra("posicion", this.jugador.getPosicion());
         i.putExtra("pie", this.jugador.getPie());
         i.putExtra("numero", this.jugador.getNumero());
-        i.putExtra("imagen", this.jugador.getImagen());
-        i.putExtra("fecha_nacimiente", this.jugador.getFecha_nacimiento());
+        i.putExtra("imagen", this.jugador.getImgByte());
+        i.putExtra("fnacimiento", this.jugador.getFecha_nacimiento());
         i.putExtra("estatura", this.jugador.getEstatura());
+
+
 
         Activity a = (Activity) view.getContext();
         a.startActivity(i);

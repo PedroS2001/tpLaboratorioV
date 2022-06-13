@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">TpLaboratorio</string>
+    <string name="app_players">Jugadores</string>
+    <string name="app_teams">Equipos</string>
+    <string name="app_player_profile">Perfil del jugador</string>
+
+    <string name="player_foot">Pie</string>
+    <string name="player_team">Equipo</string>
+    <string name="player_position">Posicion</string>
+    <string name="player_number">Numero</string>
+    <string name="player_height">Altura</string>
+
+</resources>

@@ -5,40 +5,166 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".PerfilJugadorActivity"
-    android:orientation="vertical">
+    android:orientation="vertical"
+    android:id="@+id/pepe"
+    >
 
     <ImageView
+        android:id="@+id/imgPerfil"
         android:layout_width="match_parent"
         android:layout_height="300dp"
-        android:src="@drawable/ic_launcher_background"
-        android:id="@+id/imgPerfil"
-        />
+        android:src="@drawable/ic_launcher_background" />
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:gravity="center">
+        android:gravity="center"
+        android:padding="10dp"
+        android:paddingBottom="0dp">
         <TextView
             android:id="@+id/tvNombrePerfil"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="elNombre"
-            android:textSize="25sp"
             android:textColor="@color/black"
-            android:textStyle="bold"/>
+            android:textSize="25sp"
+            android:textStyle="bold" />
         <TextView
             android:id="@+id/tvApellidoPerfil"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="elApellido"
             android:layout_marginLeft="5sp"
-            android:textSize="25sp"
+            android:text="elApellido"
             android:textColor="@color/black"
-            android:textStyle="bold"
-            />
+            android:textSize="25sp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:paddingRight="10dp"
+        android:paddingLeft="10dp"
+        android:paddingBottom="10dp">
+        <TextView
+            android:id="@+id/tvNacionalidad"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="nacionalidad"
+            android:textSize="22sp" />
 
+        <TextView
+            android:id="@+id/tvFNacimiento"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="right"
+            android:paddingRight="5dp"
+            android:text="25/05/2022"
+            android:textSize="22sp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/player_team"
+            android:textSize="20sp" />
+        <TextView
+            android:id="@+id/tvClub"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingLeft="5dp"
+            android:text="Equipo"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/player_position"
+            android:textSize="20sp" />
+        <TextView
+            android:id="@+id/tvPosicion"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingLeft="5dp"
+            android:text="Posicion"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/player_number"
+            android:textSize="20sp" />
+        <TextView
+            android:id="@+id/tvNumero"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingLeft="5dp"
+            android:text="9"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/player_height"
+            android:textSize="20sp" />
+        <TextView
+            android:id="@+id/tvAltura"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingLeft="5dp"
+            android:text="180"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:padding="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="@string/player_foot"
+            android:textSize="20sp" />
+        <TextView
+            android:id="@+id/tvPie"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:paddingLeft="5dp"
+            android:text="Derecho"
+            android:textSize="20sp"
+            android:textStyle="bold" />
     </LinearLayout>
 
 </LinearLayout>

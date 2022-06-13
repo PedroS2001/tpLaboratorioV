@@ -23,7 +23,7 @@ public class ConexionHttp {
             connection.setRequestMethod("GET");
             connection.setConnectTimeout(5000);
 
-            connection.connect();   //Realizo la peticion y se guardan los datos ne connection
+            connection.connect();   //Realizo la peticion y se guardan los datos en connection
 
             int responseCode = connection.getResponseCode();
             if(responseCode == 200)
@@ -32,7 +32,7 @@ public class ConexionHttp {
                 ByteArrayOutputStream baos = new ByteArrayOutputStream();
                 byte[] buffer = new byte[1024];
 
-                int cantidadLeida=0;
+                int cantidadLeida = 0;
                 while ( (cantidadLeida = iStream.read(buffer)) != -1 )
                 {
                     baos.write(buffer, 0, cantidadLeida);

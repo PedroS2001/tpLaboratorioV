@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">TpLaboratorio</string>
+    <string name="app_players">Players</string>
+    <string name="app_teams">Teams</string>
+    <string name="app_player_profile">Player profile</string>
+
+    <string name="player_foot">Foot</string>
+    <string name="player_team">Team</string>
+    <string name="player_position">Position</string>
+    <string name="player_number">Number</string>
+    <string name="player_height">Height</string>
+
 </resources>
