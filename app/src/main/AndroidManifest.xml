@@ -13,6 +13,9 @@
         android:theme="@style/Theme.TpLaboratorio"
         android:usesCleartextTraffic="true">
         <activity
+            android:name=".MenuJugadoresActivity"
+            android:exported="true" />
+        <activity
             android:name=".PerfilJugadorActivity"
             android:exported="true" />
         <activity

@@ -32,6 +32,15 @@ public class HiloConexion extends Thread{
             message.obj = respuestaString;
             colaMensajes.sendMessage(message);
         }
+        else if(this.tipo == 2)
+        {
+            String respuestaString = new String(respuesta);
+
+            Message message = new Message();
+            message.arg1 = 2;
+            message.obj = respuestaString;
+            colaMensajes.sendMessage(message);
+        }
         else if(this.tipo == 3)
         {
             Message message = new Message();

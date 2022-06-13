@@ -9,7 +9,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/rvJugadores"
+        android:id="@+id/rvEquipos"
         tools:ignore="MissingConstraints"></androidx.recyclerview.widget.RecyclerView>
 
     <TextView
