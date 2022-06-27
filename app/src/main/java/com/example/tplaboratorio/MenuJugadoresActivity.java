@@ -127,7 +127,8 @@ public class MenuJugadoresActivity extends AppCompatActivity implements Handler.
             byte[] img = (byte[]) message.obj;
 
             this.jugadorAdapter.actualizarImagen(message.arg2, img);
-            this.jugadorAdapter.notifyItemChanged(message.arg2);
+            //this.jugadorAdapter.notifyItemChanged(message.arg2);
+            this.jugadorAdapter.notifyDataSetChanged();
         }
 
         return false;

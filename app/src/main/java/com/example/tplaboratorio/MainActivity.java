@@ -27,8 +27,6 @@ import java.util.List;
 
 public class MainActivity extends AppCompatActivity implements Handler.Callback {
 
-    TextView tv;
-    ImageView img;
     EquipoAdapter equipoAdapter;
 
     @Override
@@ -100,6 +98,7 @@ public class MainActivity extends AppCompatActivity implements Handler.Callback 
 
             this.equipoAdapter.actualizarImagen(message.arg2, img);
             this.equipoAdapter.notifyItemChanged(message.arg2);
+            //this.equipoAdapter.notifyDataSetChanged();
         }
 
         return false;

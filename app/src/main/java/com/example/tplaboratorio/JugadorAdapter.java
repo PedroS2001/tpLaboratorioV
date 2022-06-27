@@ -61,7 +61,7 @@ public class JugadorAdapter extends RecyclerView.Adapter<JugadorVH> {
     @Override
     public void onBindViewHolder(@NonNull JugadorVH holder, int position) {
         JugadorModel j = JugadorAdapter.listaJugadores.get(position);
-        Log.d("-----", "onBindViewHolder: " +j.getNombre() +" "+ j.getApellido());
+        Log.d("-----", j.getNombre() +" "+ j.getApellido() + " position: " + position);
         holder.tvNombre.setText(j.getNombre());
         holder.tvApellido.setText(j.getApellido());
 
@@ -88,7 +88,15 @@ public class JugadorAdapter extends RecyclerView.Adapter<JugadorVH> {
     }
 
     public void actualizarImagen(Integer indice, byte[] img) {
-        listaJugadores.get(indice).setImgByte(img);
+
+        try {
+            listaJugadores.get(indice).setImgByte(img);
+        }catch (Exception e)
+        {
+            Log.d("ERROR", "actualizarImagen: "+e.getMessage());
+        }
+
+        this.notifyDataSetChanged();
     }
 
     @Override
